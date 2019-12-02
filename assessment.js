@@ -43,27 +43,27 @@ function daBears() {
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ["daBears", "papaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["daBears", "goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["daBears", "papaBear", "mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale5 = ["daBears"];
 
 
 // *************
@@ -73,16 +73,34 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Write a constructor function called Vehicle.  Vehicle should have a property
 // called gasRemaining that is equal to 100.
 
+
 // Next, assign a function called drive to the Vehicle prototype.  When invoked,
 // drive should subtract 25 from the gasRemaining property of any Vehicle your constructor
 // function creates.
+
 
 // Create 2 new Vehicles with the constructor function you made: one called "charger",
 // the other called "mustang".  Using implicit context, invoke the drive method on
 // "charger" once, and invoke it twice on "mustang".
 
 // CODE HERE...
+	class Vehicle() {
 
+		constructor() {
+		this.gasRemaining = 100;
+		};
+
+		Vehicle.prototype.drive = function() {
+			this.gasRemaining -=25;
+		};
+	}
+
+	var charger = new Vehicle();
+	charger.drive();
+
+	var mustang = new Vehicle();
+	mustang.drive();
+	mustang.drive();
 
 
 
@@ -109,6 +127,17 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
+	var grammarPolice = function(string) {
+		var str = string.toLowerCase();
+		for (var i = 0; i < string.length; i++) {
+			if (string[i] !== 'number') {
+				str[i] = string[i].toUpperCase();
+				break;
+			}
+		}
+		return str;
+	};
+
 
 
 // *************
@@ -126,6 +155,18 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // In all other cases, return "Different values"
 
 // CODE HERE...
+
+function valueType(value1, value2) {
+	if (value1 === value2) {
+		return "Exactly the same";
+	}
+	else if (value1 == value2) {
+		return "Same value, different types";
+	}
+	else {
+		return "Different values"
+	}
+}
 
 // *************
 // * PROBLEM 5 *
@@ -149,9 +190,12 @@ var elephant = {
 }
 function large() {
 
-    return 'My name is ' + this.name + ' and I am very heavy!'
+    return 'My name is ' + this.name + ' and I am very heavy!';
 }
   // CODE HERE...
+ function boundToElephant() {
+ 	return 'My name is ' + elephant.name + ' and I am very heavy!';
+ }
 
 // *************
 // * PROBLEM 6 *
@@ -164,6 +208,12 @@ function large() {
 // and return the bound function.
 
 // CODE HERE...
+
+function deathStar(capacity, crew) {
+	return capacity(crew) {
+		return crew.length;
+	}
+}
 
 
 // *************
@@ -178,3 +228,9 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
+
+function accountingOffice(assets) {
+	return function closure(liabilities) {
+		return assets + liabilities;
+	}
+}
